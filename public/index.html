@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>QuickChat — Real-Time Chat, No Sign-Up</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ================= JOIN SCREEN ================= -->
+  <div id="join-screen" class="screen join-screen">
+    <div class="join-card">
+      <div class="brand">
+        <span class="brand-icon">💬</span>
+        <h1>QuickChat</h1>
+      </div>
+      <p class="tagline">No sign-up. No email. Just chat.</p>
+
+      <form id="join-form">
+        <label for="username">Your name</label>
+        <input id="username" type="text" placeholder="e.g. Alex" maxlength="20" autocomplete="off" required />
+
+        <label for="roomId">Room ID</label>
+        <input id="roomId" type="text" placeholder="e.g. team-42 (create or join)" maxlength="30" autocomplete="off" required />
+
+        <button type="submit" id="join-btn">Join Chat</button>
+      </form>
+      <p class="hint">Share the same Room ID with someone else to chat with them.</p>
+    </div>
+  </div>
+
+  <!-- ================= CHAT SCREEN ================= -->
+  <div id="chat-screen" class="screen chat-screen hidden">
+    <header class="chat-header">
+      <div class="header-left">
+        <div class="avatar" id="room-avatar">#</div>
+        <div class="header-info">
+          <h2 id="room-title">Room</h2>
+          <span id="status-line" class="status-line offline">Offline</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <button id="clear-chat-btn" title="Clear chat for me">⟳</button>
+        <button id="leave-btn" title="Leave chat">⏻</button>
+      </div>
+    </header>
+
+    <main id="messages" class="messages"></main>
+
+    <div id="typing-indicator" class="typing-indicator hidden">
+      <span id="typing-text">Someone is typing...</span>
+    </div>
+
+    <footer class="composer">
+      <button id="attach-btn" type="button" title="Attach a file">🔗</button>
+      <input id="file-input" type="file" hidden />
+      <input id="message-input" type="text" placeholder="Type a message" autocomplete="off" />
+      <button id="send-btn" aria-label="Send message">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+        </svg>
+      </button>
+    </footer>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
